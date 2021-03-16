@@ -14,7 +14,7 @@ def Indicators_BaU_NBS(PathProject):
 
     n = int(len(ListBasin)/2)
     #k = 1
-    for k in range(1,n):
+    for k in range(1,n+1):
 
         BaU   = pd.read_csv(os.path.join(PathProject, str(k) + '-INPUTS_BaU.csv'), usecols=NameCol)
         NBS   = pd.read_csv(os.path.join(PathProject, str(k) + '-INPUTS_NBS.csv'), usecols=NameCol)
