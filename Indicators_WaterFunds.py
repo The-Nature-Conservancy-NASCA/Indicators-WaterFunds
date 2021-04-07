@@ -31,8 +31,8 @@ def Indicators_BaU_NBS(PathProject):
                 ]
 
         if k == 1:
-            Acc_BaU  = BaU*0
-            Acc_NBS  = NBS*0
+            Acc_BaU  = BaU
+            Acc_NBS  = NBS
         else:
             Acc_BaU = Acc_BaU + BaU
             Acc_NBS = Acc_NBS + NBS
