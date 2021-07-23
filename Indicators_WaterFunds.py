@@ -19,6 +19,9 @@ def Indicators_BaU_NBS(PathProject):
         BaU   = pd.read_csv(os.path.join(PathProject, str(k) + '-INPUTS_BaU.csv'), usecols=NameCol)
         NBS   = pd.read_csv(os.path.join(PathProject, str(k) + '-INPUTS_NBS.csv'), usecols=NameCol)
 
+        BaU = BaU.drop([0])
+        NBS = NBS.drop([0])
+
         # Indicators
         Indicators = ((NBS - BaU)/BaU)*100
 
