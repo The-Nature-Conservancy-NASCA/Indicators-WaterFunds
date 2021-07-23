@@ -37,10 +37,10 @@ def Indicators_BaU_NBS(PathProject):
             Acc_NBS = Acc_NBS + NBS
 
         Final_In = pd.DataFrame(data=Tmp, columns=NameCol)
-        
+
         Indicators = np.round(Indicators,2)
         Final_In   = np.round(Final_In,2)
-               
+
         Indicators.to_csv(os.path.join(PathProject,str(k) + '-OUTPUTS_Indicators_TimeSeries.csv'), index_label='Time')
         Final_In.to_csv(os.path.join(PathProject, str(k) + '-OUTPUTS_Max_Indicators.csv'), index_label='Time')
 
@@ -48,20 +48,19 @@ def Indicators_BaU_NBS(PathProject):
     Indicators = ((Acc_NBS - Acc_BaU)/Acc_BaU)*100
 
     Tmp = [[Indicators['AWY (m3)'].max(),
-                Indicators['Wsed (Ton)'].min(),
-                Indicators['WN (Kg)'].min(),
-                Indicators['WP (kg)'].min(),
-                Indicators['BF (m3)'].max(),
-                Indicators['WC (Ton)'].max()]
+            Indicators['Wsed (Ton)'].min(),
+            Indicators['WN (Kg)'].min(),
+            Indicators['WP (kg)'].min(),
+            Indicators['BF (m3)'].max(),
+            Indicators['WC (Ton)'].max()]]
 
     Final_In = pd.DataFrame(data=Tmp, columns=NameCol)
-    
+
     Indicators = np.round(Indicators,2)
     Final_In   = np.round(Final_In,2)
-           
+
     Indicators.to_csv(os.path.join(PathProject,'OUTPUTS-Indicators_TimeSeries_Total.csv'), index_label='Time')
     Final_In.to_csv(os.path.join(PathProject,'OUTPUTS-Max_Indicators_Total.csv'), index_label='Time')
-
 
 # Tester
 PathProject = r'C:\Users\TNC\Box\01-TNC\28-Project-WaterFund_App\02-Productos-Intermedios\Indicators-WaterFunds\Project'
