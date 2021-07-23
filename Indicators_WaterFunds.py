@@ -20,14 +20,14 @@ def Indicators_BaU_NBS(PathProject):
         NBS   = pd.read_csv(os.path.join(PathProject, str(k) + '-INPUTS_NBS.csv'), usecols=NameCol)
 
         # Indicators
-        Indicators = ((BaU - NBS)/NBS)*100
+        Indicators = ((NBS - BaU)/BaU)*100
 
-        Tmp = [[Indicators['AWY (m3)'][Indicators.index[-1]],
-                Indicators['Wsed (Ton)'][Indicators.index[-1]],
-                Indicators['WN (Kg)'][Indicators.index[-1]],
-                Indicators['WP (kg)'][Indicators.index[-1]],
-                Indicators['BF (m3)'][Indicators.index[-1]],
-                Indicators['WC (Ton)'][Indicators.index[-1]]],
+        Tmp = [[Indicators['AWY (m3)'].max(),
+                Indicators['Wsed (Ton)'].min(),
+                Indicators['WN (Kg)'].min(),
+                Indicators['WP (kg)'].min(),
+                Indicators['BF (m3)'].max(),
+                Indicators['WC (Ton)'].max(),
                 ]
 
         if k == 1:
@@ -38,23 +38,29 @@ def Indicators_BaU_NBS(PathProject):
             Acc_NBS = Acc_NBS + NBS
 
         Final_In = pd.DataFrame(data=Tmp, columns=NameCol)
-
+        
+        Indicators = np.round(Indicators,2)
+        Final_In   = np.round(Final_In,2)
+               
         Indicators.to_csv(os.path.join(PathProject,str(k) + '-OUTPUTS_Indicators_TimeSeries.csv'), index_label='Time')
         Final_In.to_csv(os.path.join(PathProject, str(k) + '-OUTPUTS_Max_Indicators.csv'), index_label='Time')
 
     # Integrated Indicator
-    Indicators = ((Acc_BaU - Acc_NBS)/Acc_NBS)*100
+    Indicators = ((Acc_NBS - Acc_BaU)/Acc_BaU)*100
 
-    Tmp = [[Indicators['AWY (m3)'][Indicators.index[-1]],
-            Indicators['Wsed (Ton)'][Indicators.index[-1]],
-            Indicators['WN (Kg)'][Indicators.index[-1]],
-            Indicators['WP (kg)'][Indicators.index[-1]],
-            Indicators['BF (m3)'][Indicators.index[-1]],
-            Indicators['WC (Ton)'][Indicators.index[-1]]],
-            ]
+    Tmp = [[Indicators['AWY (m3)'].max(),
+                Indicators['Wsed (Ton)'].min(),
+                Indicators['WN (Kg)'].min(),
+                Indicators['WP (kg)'].min(),
+                Indicators['BF (m3)'].max(),
+                Indicators['WC (Ton)'].max(),
+                ]
 
     Final_In = pd.DataFrame(data=Tmp, columns=NameCol)
-
+    
+    Indicators = np.round(Indicators,2)
+    Final_In   = np.round(Final_In,2)
+           
     Indicators.to_csv(os.path.join(PathProject,'OUTPUTS-Indicators_TimeSeries_Total.csv'), index_label='Time')
     Final_In.to_csv(os.path.join(PathProject,'OUTPUTS-Max_Indicators_Total.csv'), index_label='Time')
 
