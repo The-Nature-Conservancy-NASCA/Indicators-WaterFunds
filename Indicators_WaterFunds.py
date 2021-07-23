@@ -27,8 +27,7 @@ def Indicators_BaU_NBS(PathProject):
                 Indicators['WN (Kg)'].min(),
                 Indicators['WP (kg)'].min(),
                 Indicators['BF (m3)'].max(),
-                Indicators['WC (Ton)'].max(),
-                ]
+                Indicators['WC (Ton)'].max()]]
 
         if k == 1:
             Acc_BaU  = BaU
@@ -53,8 +52,7 @@ def Indicators_BaU_NBS(PathProject):
                 Indicators['WN (Kg)'].min(),
                 Indicators['WP (kg)'].min(),
                 Indicators['BF (m3)'].max(),
-                Indicators['WC (Ton)'].max(),
-                ]
+                Indicators['WC (Ton)'].max()]
 
     Final_In = pd.DataFrame(data=Tmp, columns=NameCol)
     
