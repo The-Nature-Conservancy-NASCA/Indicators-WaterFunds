@@ -14,6 +14,8 @@ def Indicators_BaU_NBS(PathProject):
 
     n = int(len(ListBasin)/2)
     #k = 1
+    Acc_BaU  = 0
+    Acc_NBS  = 0
     for k in range(1,n+1):
 
         BaU   = pd.read_csv(os.path.join(PathProject, str(k) + '-INPUTS_BaU.csv'), usecols=NameCol)
@@ -66,5 +68,5 @@ def Indicators_BaU_NBS(PathProject):
     Final_In.to_csv(os.path.join(PathProject,'OUTPUTS-Max_Indicators_Total.csv'), index_label='Time')
 
 # Tester
-PathProject = r'C:\Users\TNC\Box\01-TNC\28-Project-WaterFund_App\02-Productos-Intermedios\Indicators-WaterFunds\Project'
-Indicators_BaU_NBS(PathProject)
+#PathProject = r'C:\Users\TNC\Box\01-TNC\28-Project-WaterFund_App\02-Productos-Intermedios\Indicators-WaterFunds\Project'
+#Indicators_BaU_NBS(PathProject)
