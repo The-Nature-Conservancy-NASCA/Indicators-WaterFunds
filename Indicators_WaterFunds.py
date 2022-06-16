@@ -52,14 +52,12 @@ def Indicators_BaU_NBS(PathProject):
     # Integrated Indicator
     Indicators = ((Acc_NBS - Acc_BaU)/Acc_BaU)*100
 
-    Tmp = [[Indicators['AWY (m3)'].max(),
-            Indicators['Wsed (Ton)'].min(),
-            Indicators['WN (Kg)'].min(),
-            Indicators['WP (kg)'].min(),
-            Indicators['BF (m3)'].max(),
-            Indicators['WC (Ton)'].max()]]
+    # Indicador total - Curvas integradas 
+    Int_NBS     = np.trapz(Acc_NBS, dx=1.0, axis=0)
+    Int_BaU     = np.trapz(Acc_BaU, dx=1.0, axis=0)
+    Tmp         = ((Int_NBS - Int_BaU) / Int_BaU) * 100
 
-    Final_In = pd.DataFrame(data=Tmp, columns=NameCol)
+    Final_In = pd.DataFrame(data=np.reshape(Tmp,(1,6)), columns=NameCol)
 
     Indicators = np.round(Indicators,2)
     Final_In   = np.round(Final_In,2)
