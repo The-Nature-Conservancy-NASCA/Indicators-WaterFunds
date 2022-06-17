@@ -60,6 +60,7 @@ def Indicators_BaU_NBS(PathProject):
     Final_In = pd.DataFrame(data=np.reshape(Tmp,(1,6)), columns=NameCol)
 
     Indicators = np.round(Indicators,2)
+    Indicators = (Indicators*0 + 1)*Tmp
     Final_In   = np.round(Final_In,2)
 
     Indicators.to_csv(os.path.join(PathProject,'OUTPUTS-Indicators_TimeSeries_Total.csv'), index_label='Time')
